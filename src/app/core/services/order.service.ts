@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class OrderService {
 
   apiUrl = `http://cafe.runasp.net/api/Delivery/Order`;
-
+// commentt
   constructor(private http:HttpClient) { }
 
   getAllOrder(selectedOrder:number)
