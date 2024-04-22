@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class OrderService {
 
-  apiUrl = `https://cafe.runasp.net/api/Delivery/Order`;
+  apiUrl = `http://cafe.runasp.net/api/Delivery/Order`;
 
   constructor(private http:HttpClient) { }
 
