@@ -1,0 +1,37 @@
+<div class="container ">
+
+  <!-- <div class="navbar fixed top-0 right-0 w-full" *ngIf="!isLoggedView()">
+    <app-navbar></app-navbar>
+  </div> -->
+
+  <div class="flex w-full">
+
+    <!-- <aside class=" bg-slate-900 text-white  overflow-y-auto w-60 pt-[50px]  " *ngIf="!isLoggedView()">
+      <div class="p-4  ">
+        <h1 class="text-lg font-semibold"> Delivery </h1>
+        <ul class="mt-4 space-y-2">
+          <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"  class="block hover:bg-gray-700 py-2 px-4">Order</a></li>
+
+        </ul>
+      </div>
+    </aside> -->
+
+    <div class=" text-black " style="width: 100%;">
+
+      <div class="w-full" *ngIf="!isLoggedView()">
+        <app-navbar></app-navbar>
+      </div>
+
+      <div class="m-3">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- <div class="footer" *ngIf="!isLoggedView()">
+    <app-footer></app-footer>
+  </div> -->
+</div>

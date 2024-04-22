@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .footer {
+    width: 100%;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+
+  .active {
+    /* Add your specific styles for the active state here */
+    color: #7c4e27; /* Replace with your desired styles */
+    font-weight: bold;
+    /* Add more styles as needed */
+  }

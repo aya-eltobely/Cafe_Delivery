@@ -1,0 +1,136 @@
+<div class="demo-button-container mb-[20px] flex justify-between w-full">
+    <h1> All Order </h1>
+
+
+    <button (click)="toggle()" mat-mini-fab color="primary">
+        <mat-icon class="text-white"  > search </mat-icon>
+    </button>
+
+</div>
+
+
+   
+  <div class="my-5">
+    <mat-accordion class="example-headers-align " multi   >
+        <mat-expansion-panel [@collapseExpand]="state" [expanded]="state" >
+           
+      
+            <div class="flex gap-2 pt-4">
+                <mat-form-field class="w-full lg:w-[50%]"  >
+                    <mat-label>Filter</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" #input>
+                </mat-form-field>
+            
+            
+                <form [formGroup]="selectForm" class="grow" >
+                    <mat-form-field class="w-full">
+                        <mat-label>Choose an option</mat-label>
+                        <mat-select formControlName="selctedValue" (selectionChange)="onSelectChange($event)">
+                            <mat-option value="1"> Pendding Orders</mat-option>
+                            <mat-option value="2"> Done Orders </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form>
+            </div>
+      
+        </mat-expansion-panel>
+      </mat-accordion>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class=" overscroll-y-auto">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element,let i=index"> {{i+1}} </td>
+        </ng-container>
+
+        <!--userFullName Column -->
+        <ng-container matColumnDef="userFullName">
+            <th mat-header-cell *matHeaderCellDef> Order By </th>
+            <td mat-cell *matCellDef="let element"> {{element.userFullName}} </td>
+        </ng-container>
+
+        <!-- date Column -->
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date | date }} </td>
+        </ng-container>
+
+        <!-- orderTotals Column -->
+        <ng-container matColumnDef="orderTotals">
+            <th mat-header-cell *matHeaderCellDef> Order Total </th>
+            <td mat-cell *matCellDef="let element"> {{element.orderTotals | egyCurrency}} </td>
+        </ng-container>
+
+        <!--address Column -->
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+
+
+        <!-- deliveryStatus Column -->
+        <ng-container matColumnDef="deliveryStatus">
+            <th mat-header-cell *matHeaderCellDef> Delivery Status </th>
+            <td mat-cell *matCellDef="let element" [ngClass]= "{'text-[red]': element.deliveryStatus == 'OnWay', 'text-[blue]' : element.deliveryStatus == 'Pendding' , 'text-[green]' : element.deliveryStatus == 'Done' }"  > 
+                {{element.deliveryStatus}}
+             </td>
+
+        </ng-container>
+
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+
+
+
+                @if( ! (element.deliveryStatus == 'Done') )
+                {
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+
+                <mat-menu #menu="matMenu">
+
+                    @if (element.deliveryStatus == 'Pendding')
+                    {
+                        <button mat-menu-item (click)="onWay(element.id)">
+                            <span>On Way</span>
+                        </button>
+                    }
+
+                    @if (element.deliveryStatus == 'OnWay')
+                    {
+                        <button mat-menu-item (click)="onDone(element.id)">
+                            <span>Done</span>
+                        </button>
+                    }
+
+
+                </mat-menu>
+                }
+
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[10]" aria-label="Select page">
+    </mat-paginator>
+</div>

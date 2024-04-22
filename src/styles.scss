@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400..700&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// @import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+ 
+  
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family: "Exo 2", sans-serif;
+
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.custom-mat-form-field .mat-form-field-wrapper {
+    border-radius: 0; /* Remove border-radius */
+    border: 1px solid rgba(0, 0, 0, 0.12); /* Add border */
+  }
+  
+  .custom-mat-form-field .mat-form-field-outline {
+    color: rgba(0, 0, 0, 0.42); /* Change outline color */
+  }
+
+  table thead tr
+{
+    background-color: #4B49AC !important;
+    color: white !important;
+}
+
+.BgPurpleColor
+{
+    background-color: #4B49AC !important;
+    color: white !important;
+}
